@@ -1,0 +1,59 @@
+﻿
+@using kullaniciProje.Models.Entity
+@model List<Kullanicilar>
+@{
+    ViewBag.Title = "kullaniciListele";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<form class="form-group" method="post">
+    <div>
+        <label>Kullanıcı Adı</label><input type="text" class="form-control" name="K_Ad" />
+        <label>Adı Soyadı</label><input type="text" class="form-control" name="Ad_Soyad" />
+        <label>Şifre</label><input type="password" class="form-control" name="Sifre" />
+        <label>Kullanıcı Grubu</label>
+        <!--<fieldset>
+            <select id="Grup" name="Grup" class="form-select">
+                <option value="K1">K1</option>
+                <option value="K2">K2</option>
+            </select>
+        </fieldset><br />-->
+       <!-- <label>Kullanıcı Türü</label><br />
+        <input type="checkbox" id="admin" name="K_Tur" value="admin">
+        <label for="admin">Admin</label><br>
+        <input type="checkbox" id="kullanıcı" name="K_Tur" value="kullanıcı">
+        <label for="kullanıcı">Kullanıcı</label><br>-->
+    </div>
+    <button class="btn btn-info">Kullanıcı Ekle</button>
+</form>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Kullanıcı Adı</th>
+        <th>Ad Soyad</th>
+        <th>Şifre</th>
+        <th>Grup</th>
+        <th>Kullanıcı Tür</th>
+        <th>İşlem</th>
+    </tr>
+    <tbody>
+        @foreach(var kullanici in Model)
+        {
+            <tr>
+                <td>@kullanici.Id</td>
+                <td>@kullanici.K_Ad</td>
+                <td>@kullanici.Ad_Soyad</td>
+                <td>@kullanici.Sifre</td>
+                <td>@kullanici.Grup</td>
+                <td>@kullanici.K_Tur</td>
+                <td>
+                    <a href="/Kullanici/sil/@kullanici.Id" class="btn btn-danger">Sil</a>
+                    <a href="/Kullanici/kullaniciGetir/@kullanici.Id" class="btn btn-success">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
